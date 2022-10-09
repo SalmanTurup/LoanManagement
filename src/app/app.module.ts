@@ -8,6 +8,10 @@ import { OTPVerificationComponent } from './otp-verification/otp-verification.co
 import { PrimaryUserComponent } from './primary-user/primary-user.component';
 import { SecondaryUserComponent } from './secondary-user/secondary-user.component';
 import { MainUserComponent } from './main-user/main-user.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatListModule } from '@angular/material/list';
+import {MatButtonModule} from '@angular/material/button';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,12 @@ import { MainUserComponent } from './main-user/main-user.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

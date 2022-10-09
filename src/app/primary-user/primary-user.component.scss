@@ -1,0 +1,26 @@
+.form-label {
+    color: whitesmoke;
+}
+
+.pageBackground {
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+}
+
+.left-partition {
+    border-right: 1px solid #BBBABA;
+    word-break: break-all;
+    & .mat-list-item-content {
+        padding-left: 4px !important;
+    }
+}
+
+.mat-mini-fab.mat-accent.addPlusButton {
+    width: 35px;
+    height: 35px;
+    font-weight: bold;
+    background-color: #2196F3;
+
+    & .mat-button-wrapper {
+        line-height: 19px;
+    }
+}

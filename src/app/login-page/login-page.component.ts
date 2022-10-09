@@ -14,8 +14,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   onClick(mob: String, id: string, name: string,){
-  if(this.mobile==mob && id=='ser@gmail.com' && name=='salmanturup'){
-    this.route.navigate(["main"])}
+  // if(this.mobile==mob && id=='ser@gmail.com' && name=='salmanturup'){
+    this.route.navigate(["primary-user"])
   // }else{
   //   this.route.navigate(["primary-user"])
   // }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-primary-user',
@@ -11,13 +12,15 @@ export class PrimaryUserComponent implements OnInit {
     {
       id: 0,
       type: 'Primary',
-      applicantName: 'Salman'
+      applicantName: 'Salman turup'
     }
   ];
   selectedForm: any;
+  route: any;
+  id: any;
 
-  constructor() { }
-
+  constructor( private rot:Router) { }
+  
   ngOnInit(): void {
     this.selectedForm = this.applicantArray[0];
   }
@@ -27,7 +30,10 @@ export class PrimaryUserComponent implements OnInit {
   }
 
   addApplicant() {
-    this.applicantArray.push({ id: this.applicantArray.length, type: 'Secondary', applicantName: 'Bhavesh' });
+    this.applicantArray.push({ id: this.applicantArray.length, type: 'Secondary', applicantName: 'Bhavesh bokade' });
+  }
+  nevigateToOtp(){
+    this.rot.navigate(['otp-verification']);
   }
 
 }

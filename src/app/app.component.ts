@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FormControl,FormGroup,Validator } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  Login=new FormGroup({
+    
+  })
   title = 'HDFC-project';
 }

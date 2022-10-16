@@ -12,6 +12,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import{MatFormFieldModule} from '@angular/material/form-field'
+import {MatNativeDateModule} from '@angular/material/core';
+import {HttpClientModule} from '@angular/common/http';
+import { HttpService } from './services/http.service';
 
 @NgModule({
   declarations: [
@@ -22,6 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PrimaryUserComponent,
     SecondaryUserComponent,
     MainUserComponent
+   
   ],
   imports: [
     BrowserModule,
@@ -31,8 +36,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    HttpClientModule,
+    
+    
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
+  
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 <div class="pageBackground">
   <div class="container pageBackground" style="padding-top:10px;">
     <form>
-      <div style="font-size: 35px; font-weight:bolder; color: beige; border-bottom-color: rgb(70, 255, 255); border-bottom-style:groove;">
+      <div style="font-size: 35px; font-weight:bolder; color: beige; border-bottom-color: rgb(70, 255, 255); border-bottom-style:groove; padding-bottom:40px; padding-top:20px;">
         Personal information
       </div>
       <br>
@@ -65,12 +65,17 @@
               <option value="3">OTHERS</option>
             </select>
           </div>
-          <div class="input-group">
-            <span class="input-group-text">Address :</span>
-            <textarea style="height:85px;" class="form-control" aria-label="With textarea"></textarea>
-          </div>
+          
         </div>
         <div class="col">
+          <!-- <div class="input-group">
+            <span class="input-group-text">Address :</span>
+            <textarea style="height:85px;" class="form-control" aria-label="With textarea"></textarea>
+          </div> -->
+          <div class="mb-3">
+            <label class="form-label">Address :</label>
+            <input type="text" class="form-control">
+          </div>
           <div class="mb-3">
             <label class="form-label">Employer Name:</label>
             <input type="text" class="form-control">
@@ -81,20 +86,20 @@
           </div>
           <div class="mb-3">
             <label class="form-label">DOI:</label>
-            <input type="text" class="form-control">
+            <input type="date" class="form-control">
           </div>
           <div class="mb-3">
             <label class="form-label">Loyality Card:</label>
             <input type="text" class="form-control">
           </div>
-          <div class="mb-3">
+          <!-- <div class="mb-3">
             <label class="form-label" style="color:whitesmoke;">Ref. ID:</label>
             <input type="text" class="form-control">
           </div>
-          <div class="mb-3">
+          <div class="mb-3" style="display;">
             <label class="form-label">External Customer Id:</label>
             <input type="text" class="form-control">
-          </div>
+          </div> -->
           <div class="mb-3">
             <label class="form-label">Applicant Dedupe Status:</label>
             <input type="text" class="form-control">

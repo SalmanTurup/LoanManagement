@@ -15,16 +15,15 @@
                           <span class="h1 fw-bold mb-0 text-uppercase" >User Login</span>
                         </div>
                         <div class="form-outline mb-4" >
-                          <label class="form-label" for="mobilenumber" >Mobile Number</label>
-                          <input #mob type="tel" placeholder="Enter Your Mobile Number" (keypress)="OnlyNumbersAllowed($event)" class="form-control form-control-lg" />
+                          <!-- <label class="form-label" for="mobilenumber" >Mobile Number</label>
+                          <input #mob type="tel" placeholder="Enter Your Mobile Number" (keypress)="OnlyNumbersAllowed($event)" class="form-control form-control-lg" /> -->
                           
-                          <!-- <mat-form-field>
-                            <input matInput id="mobile" placeholder="mobile no" name="mobile" #mobile="ngModel"
-                               [(ngModel)]="mobile" required>
-                          <mat-error [hidden]="mobile.valid">
-                                <div [hidden]="!mobile.hasError('required')">It is required</div>
+                          <mat-form-field>
+                            <input matInput id="mobile" placeholder="mobile no" name="mobile" #mobile="ngModel" [(ngModel)]="mobile_number" required>
+                            <mat-error [hidden]="mobile.valid">
+                              <div [hidden]="!mobile.hasError('required')">It is required</div>
                             </mat-error>
-                          </mat-form-field> -->
+                          </mat-form-field>
 
                           <!-- <mat-form-field appearance="outline">
                             <mat-label>Outline form field</mat-label>

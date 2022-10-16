@@ -9,7 +9,7 @@ import { HttpService } from '../services/http.service';
 })
 
 export class LoginPageComponent implements OnInit {
-  mobile: String = '123456789';
+  mobile_number: String = '123456789';
 
   constructor(
     private route: Router,

@@ -16,6 +16,7 @@ import{MatFormFieldModule} from '@angular/material/form-field'
 import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from '@angular/common/http';
 import { HttpService } from './services/http.service';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { HttpService } from './services/http.service';
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    MatInputModule,
     MatNativeDateModule,
     HttpClientModule,
     

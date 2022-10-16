@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
 
-
-
 @Component({
   selector: 'app-login-page',
   templateUrl: './login-page.component.html',
@@ -11,51 +9,40 @@ import { HttpService } from '../services/http.service';
 })
 
 export class LoginPageComponent implements OnInit {
-  OnlyNumbersAllowed(event: { which: any; keyCode: any; }):boolean{
-    const charCode = (event.which)?event.which: event.keyCode;
-if(charCode > 31 && (charCode < 48 || charCode > 57)){
-window.alert('Alphabet is not Allowed');
+  mobile: String = '123456789';
 
-return false;
-}
-return true;
+  constructor(
+    private route: Router,
+    private httpAPI: HttpService
+  ) { }
+
+  ngOnInit() {
+      this.httpAPI.GET().subscribe({
+        next: (response) => { console.log(response) },
+        error: (error) => { console.log(error) }
+     })
   }
 
+  OnlyNumbersAllowed(event: { which: any; keyCode: any; }): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      window.alert('Alphabet is not Allowed');
 
-  OnlyAlphabetAllowed(event: { which: any; keyCode: any;}):boolean{
-    const charCode = (event.which)?event.which: event.keyCode;
-    if((charCode >= 65 && charCode <= 90) || (charCode >= 95 && charCode <= 122)){
-      return true;
-
-      }
-      window.alert('Only Alphabet is Allowed');
       return false;
-      
+    }
+    return true;
   }
 
-
-
-
-
-
-
-
-
-
-   mobile:String='123456789';
-  constructor( private route:Router , private httpAPI:HttpService) { 
-    
+  OnlyAlphabetAllowed(event: { which: any; keyCode: any; }): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if ((charCode >= 65 && charCode <= 90) || (charCode >= 95 && charCode <= 122)) {
+      return true;
+    }
+    window.alert('Only Alphabet is Allowed');
+    return false;
   }
 
-  ngOnInit(){
-  //   this.httpAPI.GET.subscribe((result) => {
-      
-  //   }).catch((err) => {
-      
-  //   });
-   }
-
-  onClick(){
+  onClick() {
     this.route.navigate(["primary-user"])
   }
 }

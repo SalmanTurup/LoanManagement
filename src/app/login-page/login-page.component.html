@@ -3,44 +3,41 @@
 </head>
     <body class="vh-100 vh-100 gradient-custom" style="background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))">
         <div class="container-xxl" style=" padding-top:40px; padding-bottom: 40px; background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))">
-          <div class="row d-flex justify-content-center align-items-center h-100 " style="color:white;font-weight: bold;">
+          <div class="row d-flex justify-content-center align-items-center h-100 " style="color:rgb(37, 83, 235);font-weight: bold;">
             <div class="col col-xl-10 " >
-              <div class="card card bg-dark" style="border-radius: 1rem; " >
+              <div class="card card " style="border-radius: 1rem; " >
                 <div class="row g-0" style="padding-left:340px;" >
                   <div class="col-md-6 col-lg-7 d-flex align-items-center" >
                     <div class="card-body p-4 p-lg-5 text-black" >
                       <form >
                         <div class="d-flex align-items-center mb-3 pb-1" >
                           <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219; padding-left:34px;"></i>
-                          <span class="h1 fw-bold mb-0 text-uppercase" >User Login</span>
+                          <span class="h1 fw-bold mb-0 text-uppercase" >BIZLOAN</span>
                         </div>
                         <div class="form-outline mb-4" >
-                          <!-- <label class="form-label" for="mobilenumber" >Mobile Number</label>
-                          <input #mob type="tel" placeholder="Enter Your Mobile Number" (keypress)="OnlyNumbersAllowed($event)" class="form-control form-control-lg" /> -->
-                          
                           <mat-form-field>
-                            <input matInput id="mobile" placeholder="mobile no" name="mobile" #mobile="ngModel" [(ngModel)]="mobile_number" required>
-                            <mat-error [hidden]="mobile.valid">
+                            <input matInput (keypress)="OnlyNumbersAllowed($event)" id="mobile" placeholder="Mobile Number" name="mobile" #mobile="ngModel" [(ngModel)]="mobile_number" ngModel maxlength="10" required>
+                            <mat-error [hidden]="mobile.valid" >
                               <div [hidden]="!mobile.hasError('required')">It is required</div>
                             </mat-error>
                           </mat-form-field>
-
-                          <!-- <mat-form-field appearance="outline">
-                            <mat-label>Outline form field</mat-label>
-                            <input matInput placeholder="Placeholder">
-                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                            <mat-hint>Hint</mat-hint>
-                          </mat-form-field> -->
-                        
                         </div> 
                         <div class="form-outline mb-4">
-                          <label class="form-label" for="email" >Email</label>
-                          <input #id type="email" placeholder="Enter Your Email"  class="form-control form-control-lg" />
+                          <mat-form-field >
+                          <input matInput id="gmail"  placeholder="Email Id" name="gmail" #gmail="ngModel" [(ngModel)]="email_id" required>
+                          <mat-error [hidden]="gmail.valid" >
+                            <div [hidden]="!gmail.hasError('required')">It is required</div>
+                          </mat-error>
+                          </mat-form-field>
                         </div>
                         <div class="form-outline mb-4">
-                            <label class="form-label" for="name">Name</label>
-                            <input #name type="text" (keypress)="OnlyAlphabetAllowed($event)" placeholder="Enter Your Full Name"  class="form-control form-control-lg"/>
-                        </div>
+                            <mat-form-field>
+                              <input matInput (keypress)="OnlyAlphabetAllowed($event)" id="names"  placeholder="Name" name="names" #names="ngModel" [(ngModel)]="u_name" required>
+                              <mat-error [hidden]="names.valid" >
+                                <div [hidden]="!names.hasError('required')">It is required</div>
+                              </mat-error>
+                              </mat-form-field>
+                        </div><br>
                         <!-- <div class="form-outline mb-4">
                             <label class="form-label">Ref-ID</label>
                             <input type="text"  placeholder="Enter Your Reference ID"id="form2Example27" class="form-control form-control-lg"/>
@@ -50,7 +47,7 @@
                             <input type="text" placeholder="Enter Your External ID" id="form2Example27" class="form-control form-control-lg"/>
                         </div> -->
                         <div class="pt-1 mb-4">
-                          <button class="btn-lg btn-success" (click)="onClick()">Submit</button>
+                          <button class="btn-lg btn-info" (click)="onClick()">Submit</button>
                         </div>
                        
                       </form>

@@ -1,7 +1,7 @@
 <div class="pageBackground">
   <div class="container pageBackground" style="padding-top:10px;">
     <form>
-      <div style="font-size: 35px; font-weight:bolder; color: beige; border-bottom-color: rgb(70, 255, 255); border-bottom-style:groove; padding-bottom:40px; padding-top:20px;">
+      <div style="font-size: 35px; font-weight:bolder; color: rgb(0, 0, 0); border-bottom-color: rgb(70, 255, 255); border-bottom-style:groove; padding-bottom:40px; padding-top:20px;">
         Personal information
       </div>
       <br>
@@ -33,80 +33,112 @@
           </div>
 
         </div>
-        <div class="col">
+        <div class="col" style="padding-left:100px;">
           <div class="mb-3">
-            <label class="form-label">Kyc Details:</label>
-            <input type="text" class="form-control">
+            <mat-form-field appearance="outline">
+              <mat-label> Kyc Details:</mat-label>
+              <input (keypress)="OnlyNumbersAllowed($event)" ngModel maxlength="12" matInput placeholder="  Aadhar card number">
+            </mat-form-field>
           </div>
           <div class="mb-3">
-            <label class="form-label">Name:</label>
-            <input type="text" class="form-control" name="applicantName" #applicantName="ngModel" [(ngModel)]="selectedForm.applicantName">
+            <mat-form-field appearance="outline">
+              <mat-label> Name:</mat-label>
+              <input (keypress)="OnlyAlphabetAllowed($event)" class="form-control" name="applicantName" #applicantName="ngModel" [(ngModel)]="selectedForm.applicantName" matInput placeholder="  Full Name">
+            </mat-form-field>
           </div>
           <div class="mb-3">
-            <label class="form-label">Mobile No:</label>
-            <input type="tel" class="form-control">
+            <mat-form-field appearance="outline">
+              <mat-label>Mobile No:</mat-label>
+              <input (keypress)="OnlyNumbersAllowed($event)" ngModel maxlength="10"  matInput placeholder="  Mobile number">
+            </mat-form-field>
           </div>
           <div class="mb-3">
-            <label class="form-label">Email ID:</label>
-            <input type="email" class="form-control">
+            <mat-form-field appearance="outline">
+              <mat-label>Email ID:</mat-label>
+              <input matInput placeholder="  ex:-user1@gmail.com">
+            </mat-form-field>
           </div>
           <div class="mb-3">
-            <label class="form-label">Date Of Birth:</label>
-            <input type="date" class="form-control">
-          </div>      
+            <mat-form-field appearance="outline">
+              <mat-label>Date Of Birth:</mat-label>
+              <input matInput [matDatepicker]="picker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+
           <br>
-          <div class="input-group mb-3" style="padding-top:8.3px;">
-            <label class="input-group-text">Address Type:</label>
-            <select class="form-select">
-              <option selected>Choose...</option>
-              <option value="1">RESIDENCE</option>
-              <option value="2">PERMANENT</option>
-              <option value="3">OFFICE</option>
-              <option value="3">OTHERS</option>
-            </select>
+          <div class="input-group mb-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Address Type:</mat-label>
+              <select matNativeControl required>
+                <option value="Choose...">Choose...</option>
+                <option value="RESIDENCE">RESIDENCE</option>
+                <option value="OFFICE">OFFICE</option>
+                <option value="OTHERS">OTHERS</option>
+              </select>
+            </mat-form-field>
+          </div>
+          <div class="mb-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Address :</mat-label>
+              <input matInput placeholder="  Full Address">
+            </mat-form-field>
           </div>
           
         </div>
         <div class="col">
-          <!-- <div class="input-group">
-            <span class="input-group-text">Address :</span>
-            <textarea style="height:85px;" class="form-control" aria-label="With textarea"></textarea>
-          </div> -->
+          
           <div class="mb-3">
-            <label class="form-label">Address :</label>
-            <input type="text" class="form-control">
+            <mat-form-field appearance="outline">
+              <mat-label>Employer Name:</mat-label>
+              <input (keypress)="OnlyAlphabetAllowed($event)" matInput placeholder="  Name">
+            </mat-form-field>
           </div>
           <div class="mb-3">
-            <label class="form-label">Employer Name:</label>
-            <input type="text" class="form-control">
+            <mat-form-field appearance="outline">
+              <mat-label>Udyam No:</mat-label>
+              <input matInput placeholder="  Number">
+            </mat-form-field>
           </div>
           <div class="mb-3">
-            <label class="form-label">Udyam No</label>
-            <input type="number" class="form-control">
+            <mat-form-field appearance="outline">
+              <mat-label>DOI:</mat-label>
+              <input matInput [matDatepicker]="pickers">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+              <mat-datepicker #pickers></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <br>
+          <div class="mb-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Loyality Card:</mat-label>
+              <input matInput >
+            </mat-form-field>
+          </div>
+         <div class="mb-3">
+            <mat-form-field appearance="outline">
+              <mat-label>Ref. ID:</mat-label>
+              <input matInput  disabled="">
+            </mat-form-field>
+          </div>
+            <div class="mb-3">
+            <mat-form-field appearance="outline">
+              <mat-label>External Customer Id:</mat-label>
+              <input matInput  disabled="">
+            </mat-form-field>
           </div>
           <div class="mb-3">
-            <label class="form-label">DOI:</label>
-            <input type="date" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Loyality Card:</label>
-            <input type="text" class="form-control">
-          </div>
-          <!-- <div class="mb-3">
-            <label class="form-label" style="color:whitesmoke;">Ref. ID:</label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="mb-3" style="display;">
-            <label class="form-label">External Customer Id:</label>
-            <input type="text" class="form-control">
-          </div> -->
-          <div class="mb-3">
-            <label class="form-label">Applicant Dedupe Status:</label>
-            <input type="text" class="form-control">
+            <mat-form-field appearance="outline">
+              <mat-label>Applicant Dedupe Status:</mat-label>
+              <input matInput >
+            </mat-form-field>
           </div>
         </div>
         <div class="mb-3">
-          <button class="btn btn-dark btn-lg" (click)="nevigateToOtp()" >Submit</button>
+          <button class="btn-lg btn-info" (click)="nevigateToOtp()" >Submit</button>
         </div>
       </form>
     </form>

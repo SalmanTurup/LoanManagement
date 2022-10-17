@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-primary-user',
   templateUrl: './primary-user.component.html',
@@ -34,6 +35,25 @@ export class PrimaryUserComponent implements OnInit {
   }
   nevigateToOtp(){
     this.rot.navigate(['otp-verification']);
+  }
+
+  OnlyNumbersAllowed(event: { which: any; keyCode: any; }): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      window.alert('Alphabet is not Allowed');
+
+      return false;
+    }
+    return true;
+  }
+
+  OnlyAlphabetAllowed(event: { which: any; keyCode: any; }): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (((charCode >= 65 && charCode <= 90) || charCode == 32 ) || ((charCode >= 95 && charCode <= 122) || charCode == 32)) {
+      return true;
+    }
+    window.alert('Only Alphabet is Allowed');
+    return false;
   }
 
 }

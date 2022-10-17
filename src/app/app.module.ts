@@ -17,6 +17,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {HttpClientModule} from '@angular/common/http';
 import { HttpService } from './services/http.service';
 import { MatInputModule } from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
     MatNativeDateModule,
     HttpClientModule,
+    MatDatepickerModule
     
     
   ],

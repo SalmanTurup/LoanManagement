@@ -1,4 +1,14 @@
 .pageBackground {
-    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    background: linear-gradient(to right, rgb(39, 126, 255), #0058f0);
 }
-
+::placeholder {
+    font-weight:80px;
+    color: antiquewhite;
+}
+input{
+    font-size:25px;
+}
+mat-form-field{
+    width:350px; 
+    height:40px;
+}

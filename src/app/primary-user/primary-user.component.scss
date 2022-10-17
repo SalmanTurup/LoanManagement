@@ -3,7 +3,7 @@
 }
 
 .pageBackground {
-    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    background: linear-gradient(to right, rgb(39, 126, 255), #0058f0);
 }
 
 .left-partition {
@@ -23,4 +23,24 @@
     & .mat-button-wrapper {
         line-height: 19px;
     }
+}
+::placeholder {
+    color: rgb(0, 0, 0);
+    font-weight:80px;
+}
+input{
+    color: aliceblue;
+    font-weight:80px;
+    width:450px;
+}
+mat-label{
+    color: whitesmoke;
+    font-size:16px;
+}
+mat-form-field{
+    width:250px;
+    height:60px;;
+}
+select{
+    color: white;
 }

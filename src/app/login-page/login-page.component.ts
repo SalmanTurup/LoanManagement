@@ -9,7 +9,11 @@ import { HttpService } from '../services/http.service';
 })
 
 export class LoginPageComponent implements OnInit {
-  mobile_number: String = '123456789';
+  mobile_number: String = "";
+  email_id: String = "";
+  u_name: String="";
+
+  
 
   constructor(
     private route: Router,
@@ -17,10 +21,6 @@ export class LoginPageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-      this.httpAPI.GET().subscribe({
-        next: (response) => { console.log(response) },
-        error: (error) => { console.log(error) }
-     })
   }
 
   OnlyNumbersAllowed(event: { which: any; keyCode: any; }): boolean {
@@ -35,7 +35,7 @@ export class LoginPageComponent implements OnInit {
 
   OnlyAlphabetAllowed(event: { which: any; keyCode: any; }): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
-    if ((charCode >= 65 && charCode <= 90) || (charCode >= 95 && charCode <= 122)) {
+    if (((charCode >= 65 && charCode <= 90) || charCode == 32 ) || ((charCode >= 95 && charCode <= 122) || charCode == 32)) {
       return true;
     }
     window.alert('Only Alphabet is Allowed');
@@ -44,5 +44,15 @@ export class LoginPageComponent implements OnInit {
 
   onClick() {
     this.route.navigate(["primary-user"])
+  }
+  get_data(){
+    this.httpAPI.GET().subscribe({
+      next: (response) => { console.log(response) },
+      error: (error) => { console.log(error) }
+   })
+   this.httpAPI.POST().subscribe({
+    next: (response) => { console.log(response) },
+    error: (error) => { console.log(error) }
+ })
   }
 }

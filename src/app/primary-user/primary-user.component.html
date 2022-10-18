@@ -1,6 +1,5 @@
 <div class="pageBackground">
   <div class="container pageBackground" style="padding-top:10px;">
-    <form>
       <div style="font-size: 35px; font-weight:bolder; color: rgb(0, 0, 0); border-bottom-color: rgb(70, 255, 255); border-bottom-style:groove; padding-bottom:10px; padding-top:5px;">
         Personal information
       </div>
@@ -24,12 +23,12 @@
                 </a>
               </mat-nav-list>
             </div>
-            <div class="col-md-12 text-right" style="padding-left:70px;">
+            <!-- <div class="col-md-12 text-right" style="padding-left:70px;">
               <button id="demo2"  mat-mini-fab type="button" class="addPlusButton " style="height:50px; width: 50px; " 
               (click)="addApplicant()">
                 Add
               </button>
-            </div>
+            </div> -->
           </div>
 
         </div>
@@ -37,19 +36,19 @@
           <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label> Kyc Details:</mat-label>
-              <input (keypress)="OnlyNumbersAllowed($event)" ngModel maxlength="12" matInput placeholder="  Aadhar card number">
+              <input (keypress)="OnlyNumbersAllowed($event)"  maxlength="12" matInput placeholder="  Aadhar card number">
             </mat-form-field>
           </div>
           <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label> Name:</mat-label>
-              <input (keypress)="OnlyAlphabetAllowed($event)" class="form-control" name="applicantName" #applicantName="ngModel" [(ngModel)]="selectedForm.applicantName" matInput placeholder="  Full Name">
+              <input (keypress)="OnlyAlphabetAllowed($event)" class="form-control" name="applicantName" matInput placeholder="  Full Name">
             </mat-form-field>
           </div>
           <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label>Mobile No:</mat-label>
-              <input (keypress)="OnlyNumbersAllowed($event)" ngModel maxlength="10"  matInput placeholder="  Mobile number">
+              <input (keypress)="OnlyNumbersAllowed($event)" maxlength="10"  matInput placeholder="  Mobile number">
             </mat-form-field>
           </div>
           <div class="mb-3">
@@ -118,10 +117,9 @@
             </mat-form-field>
           </div>
          <div class="mb-3">
-            <mat-form-field appearance="outline">
-              <mat-label>Ref. ID:</mat-label>
-              <input matInput  disabled="">
-            </mat-form-field>
+          <mat-form-field>
+            <input matInput  id="ref_id" placeholder="Ref id" name="ref_id" #ref_id="ngModel" [(ngModel)]="selectedForm.ref_id"   disabled>
+          </mat-form-field>
           </div>
             <div class="mb-3">
             <mat-form-field appearance="outline">
@@ -140,6 +138,5 @@
           <button class="btn-lg btn-info" (click)="nevigateToOtp()" >Submit</button>
         </div>
       </form>
-    </form>
   </div>
 </div>

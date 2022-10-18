@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApplicationService } from '../services/application.service';
 
 
 @Component({
@@ -13,26 +14,42 @@ export class PrimaryUserComponent implements OnInit {
     {
       id: 0,
       type: 'Primary',
-      applicantName: 'Salman turup'
+      applicantName: 'Salman turup',
+      kyc:"",
+      emai_id:"",
+      loyality:"",
+      extral_id:"",
+      ref_id:"",
+      address:"",
+      addres_type:"",      
+      employe_name:"",
+      udyam_name:"",
+      mobile_number:"",
+      doi:"",
+      dob:"",
+      dedupe_status:"",
+
+
     }
   ];
   selectedForm: any;
   route: any;
   id: any;
 
-  constructor( private rot:Router) { }
+  constructor( private rot:Router , private appservice:ApplicationService) { }
   
   ngOnInit(): void {
     this.selectedForm = this.applicantArray[0];
+    this.selectedForm.ref_id=this.appservice.ref_id;
   }
 
   getForm(index: number) {
     this.selectedForm = this.applicantArray[index];
   }
 
-  addApplicant() {
-    this.applicantArray.push({ id: this.applicantArray.length, type: 'Secondary', applicantName: 'Bhavesh bokade' });
-  }
+  // addApplicant() {
+  //   this.applicantArray.push(this.selectedForm[this.applicantArray]);
+  // }
   nevigateToOtp(){
     this.rot.navigate(['otp-verification']);
   }

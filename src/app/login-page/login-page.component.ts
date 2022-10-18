@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
 import { ToastrService } from 'ngx-toastr';
+import { ApplicationService } from '../services/application.service';
 // import{UserDataService} from'';
 
 
@@ -22,7 +23,8 @@ export class LoginPageComponent implements OnInit {
     private route: Router,
     private httpAPI: HttpService,
     // private userData:UserDataService,
-    private toster: ToastrService
+    private toster: ToastrService,
+    private appservice:ApplicationService
   ) {
 
   }
@@ -65,14 +67,18 @@ export class LoginPageComponent implements OnInit {
       return
     }
     this.body={
-      name:this.mobile_number,
+      mobile:this.mobile_number,
       email:this.email_id,
-      mobile:this.u_name
+      name:this.u_name.toUpperCase()
     }
+    this.appservice.ref_id="BIZL000014"
+    this.route.navigate(["primary-user"])
+    //to remove later
     this.httpAPI.POST("http://localhost:8080/customer/add", this.body).subscribe({
       next: (response) => {
         console.log(response);
-        this.route.navigate(["primary-user"])
+        this.appservice.ref_id=response["xyz"]
+       this.route.navigate(["primary-user"])
       },
       error: (error) => { console.log(error) }
     })

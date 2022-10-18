@@ -15,7 +15,7 @@
                         </div>
                         <div class="form-outline mb-4" >
                           <mat-form-field>
-                            <input matInput  id="mobile" placeholder="Mobile Number" name="mobile" #mobile="ngModel" [(ngModel)]="mobile_number" ngModel maxlength="10" required pattern="[6789]{1,1}[0-9]{9,9}$">
+                            <input matInput  id="mobile" placeholder="Mobile Number" name="mobile" #mobile="ngModel" [(ngModel)]="mobile_number"  maxlength="10" required pattern="[6789]{1,1}[0-9]{9,9}$">
                             <mat-error [hidden]="mobile.valid" >
                               <div [hidden]="!mobile.hasError('required')">It is required</div>
                               <div [hidden]="!mobile.hasError('pattern')">Please Enter valid Number</div>

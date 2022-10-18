@@ -22,6 +22,7 @@
     "@angular/router": "^14.2.0",
     "boostrap": "^2.0.0",
     "jquery": "^3.6.1",
+    "ngx-toastr": "^15.2.1",
     "rxjs": "~7.5.0",
     "toastr": "^2.1.4",
     "tslib": "^2.3.0",

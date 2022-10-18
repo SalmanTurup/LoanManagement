@@ -18,6 +18,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { HttpService } from './services/http.service';
 import { MatInputModule } from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,15 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatInputModule,
     MatNativeDateModule,
     HttpClientModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    ToastrModule.forRoot({
+      timeOut: 30000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      progressBar: true,
+      tapToDismiss:true,
+      progressAnimation: 'increasing',
+    }),
     
     
   ],

@@ -8,23 +8,18 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class HttpService {
 
-  user={
-    id:1,
-    name:"Salman",
-    email:"salmanjt@gmail.com",
-    mobile:9527057506
-  }
+  
   constructor(private http: HttpClient) { }
 
-  GET(): Observable<any> {
-    return this.http.get("http://localhost:8080/Customer/").pipe(
+  GET(url: string): Observable<any> {
+    return this.http.get(url).pipe(
       map(response => response),
       catchError(error => { throw new Error(error) })
     )
   }
 
-  POST() {
-    return this.http.post("http://localhost:8080/Customer",this.user).pipe(
+  POST(url:string,body:any) {
+    return this.http.post(url,body,{}).pipe(
       map(response => response),
       catchError(error => { throw new Error(error) })
     )

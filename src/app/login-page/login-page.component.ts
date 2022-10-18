@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
+import { ToastrService } from 'ngx-toastr';
+// import{UserDataService} from'';
+
 
 @Component({
   selector: 'app-login-page',
@@ -9,24 +12,34 @@ import { HttpService } from '../services/http.service';
 })
 
 export class LoginPageComponent implements OnInit {
-  mobile_number: String = "";
-  email_id: String = "";
-  u_name: String="";
+  mobile_number: string = "";
+  email_id: string = "";
+  u_name: string = "";
+  body:any;
 
-  
 
   constructor(
     private route: Router,
-    private httpAPI: HttpService
-  ) { }
+    private httpAPI: HttpService,
+    // private userData:UserDataService,
+    private toster: ToastrService
+  ) {
 
+  }
+
+  getUserFormData(data: any) {
+    console.warn(data);
+
+  }
   ngOnInit() {
   }
 
   OnlyNumbersAllowed(event: { which: any; keyCode: any; }): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      window.alert('Alphabet is not Allowed');
+      // window.alert('Alphabet is not Allowed');
+      this.toster.warning('Alphabet is not Allowed');
+
 
       return false;
     }
@@ -35,7 +48,7 @@ export class LoginPageComponent implements OnInit {
 
   OnlyAlphabetAllowed(event: { which: any; keyCode: any; }): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
-    if (((charCode >= 65 && charCode <= 90) || charCode == 32 ) || ((charCode >= 95 && charCode <= 122) || charCode == 32)) {
+    if (((charCode >= 65 && charCode <= 90) || (charCode == 32))) {
       return true;
     }
     window.alert('Only Alphabet is Allowed');
@@ -45,14 +58,23 @@ export class LoginPageComponent implements OnInit {
   onClick() {
     this.route.navigate(["primary-user"])
   }
-  get_data(){
-    this.httpAPI.GET().subscribe({
-      next: (response) => { console.log(response) },
+
+  post_data(Form:any) {
+    if(!Form.valid){
+      this.toster.warning("Please Enter Valid Details")
+      return
+    }
+    this.body={
+      name:this.mobile_number,
+      email:this.email_id,
+      mobile:this.u_name
+    }
+    this.httpAPI.POST("http://localhost:8080/customer/add", this.body).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.route.navigate(["primary-user"])
+      },
       error: (error) => { console.log(error) }
-   })
-   this.httpAPI.POST().subscribe({
-    next: (response) => { console.log(response) },
-    error: (error) => { console.log(error) }
- })
+    })
   }
 }

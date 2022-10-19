@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApplicationService } from '../services/application.service';
-
+import { HttpService } from '../services/http.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-primary-user',
@@ -14,9 +15,9 @@ export class PrimaryUserComponent implements OnInit {
     {
       id: 0,
       type: 'Primary',
-      applicantName: 'Salman turup',
+      applicantName:'',
       kyc:"",
-      emai_id:"",
+      gmail_id:"",
       loyality:"",
       extral_id:"",
       ref_id:"",
@@ -36,7 +37,7 @@ export class PrimaryUserComponent implements OnInit {
   route: any;
   id: any;
 
-  constructor( private rot:Router , private appservice:ApplicationService) { }
+  constructor( private rot:Router , private appservice:ApplicationService, private httpAPI: HttpService , private toster: ToastrService) { }
   
   ngOnInit(): void {
     this.selectedForm = this.applicantArray[0];
@@ -51,13 +52,16 @@ export class PrimaryUserComponent implements OnInit {
   //   this.applicantArray.push(this.selectedForm[this.applicantArray]);
   // }
   nevigateToOtp(){
+    // this.appservice.user_details=this.selectedForm;
     this.rot.navigate(['otp-verification']);
   }
 
   OnlyNumbersAllowed(event: { which: any; keyCode: any; }): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-      window.alert('Alphabet is not Allowed');
+      // window.alert('Alphabet is not Allowed');
+      this.toster.error('Alphabet is not Allowed');
+
 
       return false;
     }
@@ -66,11 +70,20 @@ export class PrimaryUserComponent implements OnInit {
 
   OnlyAlphabetAllowed(event: { which: any; keyCode: any; }): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
-    if (((charCode >= 65 && charCode <= 90) || charCode == 32 ) || ((charCode >= 95 && charCode <= 122) || charCode == 32)) {
+    if (((charCode >= 65 && charCode <= 90) || (charCode == 32)) || ((charCode >= 97 && charCode <= 120) || (charCode == 32))) {
       return true;
     }
-    window.alert('Only Alphabet is Allowed');
+    this.toster.error('Only Alphabet is Allowed');
     return false;
+  }
+
+  GetKycsData(kycNumber){
+    // var aadhaarpattern = new RegExp("^[0-9]{12,12}$");
+    // if (aadhaarpattern.test(aadhaar)) {
+
+    //}
+    //to call the get API
+    // this.selectedForm.applicantName="bhavesh"
   }
 
 }

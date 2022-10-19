@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-otp-verification',
@@ -8,13 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class OTPVerificationComponent implements OnInit {
   mob: String = "";
   mo_otp: String = "";
-  mail_otp: String = "";
+  g_mail_otp: String = "";
   mi_otp: String = "";
 
 
-  constructor() { }
+  constructor(private toster: ToastrService) { }
 
   ngOnInit(): void {
+  }
+  opt(){
+    this.toster.info('OTP SENT');
+    return
   }
 
 }

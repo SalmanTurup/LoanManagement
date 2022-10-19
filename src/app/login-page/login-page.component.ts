@@ -40,7 +40,7 @@ export class LoginPageComponent implements OnInit {
     const charCode = (event.which) ? event.which : event.keyCode;
     if (charCode > 31 && (charCode < 48 || charCode > 57)) {
       // window.alert('Alphabet is not Allowed');
-      this.toster.warning('Alphabet is not Allowed');
+      this.toster.error('Alphabet is not Allowed');
 
 
       return false;
@@ -50,10 +50,10 @@ export class LoginPageComponent implements OnInit {
 
   OnlyAlphabetAllowed(event: { which: any; keyCode: any; }): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
-    if (((charCode >= 65 && charCode <= 90) || (charCode == 32))) {
+    if (((charCode >= 65 && charCode <= 90) || (charCode == 32)) || ((charCode >= 97 && charCode <= 120) || (charCode == 32))) {
       return true;
     }
-    window.alert('Only Alphabet is Allowed');
+    this.toster.error('Only Alphabet is Allowed');
     return false;
   }
 
@@ -63,7 +63,7 @@ export class LoginPageComponent implements OnInit {
 
   post_data(Form:any) {
     if(!Form.valid){
-      this.toster.warning("Please Enter Valid Details")
+      this.toster.warning("Please Enter Valid Details","Validation error")
       return
     }
     this.body={
@@ -72,6 +72,7 @@ export class LoginPageComponent implements OnInit {
       name:this.u_name.toUpperCase()
     }
     this.appservice.ref_id="BIZL000014"
+    this.toster.success("You have successfully login","success")
     this.route.navigate(["primary-user"])
     //to remove later
     this.httpAPI.POST("http://localhost:8080/customer/add", this.body).subscribe({

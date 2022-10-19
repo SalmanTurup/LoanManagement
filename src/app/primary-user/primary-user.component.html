@@ -7,8 +7,8 @@
       <form #primaryForm="ngForm" class="row align-items-center">
         <div class="col">
           <div class="mb-3">
-            <h1 style="color:white; padding-bottom:15px; padding-left: 50px;"> Applicants :</h1>
-          </div>
+            <h1 style="color:rgb(0, 0, 0); padding-bottom:15px; padding-left: 50px;"> Applicants :</h1>
+          </div>  
           <!-- <div class="mb-3" style="padding-left:90px;">
             <button class="btn btn-info">Primary-Applicant</button>&nbsp; &nbsp;
             <button class="btn btn-success">+</button>
@@ -36,34 +36,54 @@
           <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label> Kyc Details:</mat-label>
-              <input (keypress)="OnlyNumbersAllowed($event)"  maxlength="12" matInput placeholder="  Aadhar card number">
+              <input matInput  id="kyc" placeholder="Kyc number" name="kyc" #kyc="ngModel" [(ngModel)]="selectedForm.kyc" (blur)="GetKycsData($event)" required >
+              <mat-error [hidden]="kyc.valid" >
+                <div [hidden]="!kyc.hasError('required')">It is required</div>
+                <div [hidden]="!kyc.hasError('pattern')">Please Enter valid Pan Number</div>
+              </mat-error>
             </mat-form-field>
           </div>
           <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label> Name:</mat-label>
-              <input (keypress)="OnlyAlphabetAllowed($event)" class="form-control" name="applicantName" matInput placeholder="  Full Name">
+              <input maxlength="10" (keypress)="OnlyAlphabetAllowed($event)" matInput  id="name" placeholder="  Full name" name="name" #name="ngModel" [(ngModel)]="selectedForm.applicantName" pattern="^[a-zA-Z ]{1,50}$" required>
+              <mat-error [hidden]="name.valid" >
+                <div [hidden]="!name.hasError('required')">It is required</div>
+                <div [hidden]="!name.hasError('pattern')">Please enter valid name</div>
+              </mat-error>
             </mat-form-field>
           </div>
           <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label>Mobile No:</mat-label>
-              <input (keypress)="OnlyNumbersAllowed($event)" maxlength="10"  matInput placeholder="  Mobile number">
+              <input matInput (keypress)="OnlyNumbersAllowed($event)" maxlength="10"  id="mob" placeholder="  Mobile number" name="mob" #mob="ngModel" [(ngModel)]="selectedForm.mobile_number" pattern="[6789]{1,1}[0-9]{9,9}$" required>
+              <mat-error [hidden]="mob.valid" >
+                <div [hidden]="!mob.hasError('required')">It is required</div>
+                <div [hidden]="!mob.hasError('pattern')">Please Enter valid mobile number</div>
+              </mat-error>
             </mat-form-field>
           </div>
           <div class="mb-3">
             <mat-form-field appearance="outline">
-              <mat-label>Email ID:</mat-label>
-              <input matInput placeholder="  ex:-user1@gmail.com">
-            </mat-form-field>
+              <mat-label>Email:</mat-label>
+              <input matInput id="gmail" placeholder="  Enter email" name="gmail" #gmail="ngModel" [(ngModel)]="selectedForm.gmail_id" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$" required>
+              <mat-error>
+                <div [hidden]="!gmail.hasError('required')">It is required</div>
+                <div [hidden]="!gmail.hasError('pattern')">Please Enter valid email</div>
+              </mat-error>
+              </mat-form-field>
           </div>
           <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label>Date Of Birth:</mat-label>
-              <input matInput [matDatepicker]="picker">
+              <input  name="b_date" id="b_date" #b_date="ngModel" [(ngModel)]="selectedForm.dob" matInput [matDatepicker]="picker" required>
               <mat-hint>MM/DD/YYYY</mat-hint>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
+              <mat-error>
+                <div [hidden]="!b_date.hasError('required')">It is required</div>
+                <div [hidden]="!b_date.hasError('pattern')">Please Enter valid Date</div>
+              </mat-error>
             </mat-form-field>
           </div>
 
@@ -71,18 +91,26 @@
           <div class="input-group mb-3">
             <mat-form-field appearance="outline">
               <mat-label>Address Type:</mat-label>
-              <select matNativeControl required>
+              <select name="d_date" #d_date="ngModel" [(ngModel)]="selectedForm.addres_type" matNativeControl required>
                 <option value="Choose...">Choose...</option>
                 <option value="RESIDENCE">RESIDENCE</option>
                 <option value="OFFICE">OFFICE</option>
                 <option value="OTHERS">OTHERS</option>
               </select>
+              <mat-error>
+                <div [hidden]="!b_date.hasError('required')">It is required</div>
+                <div [hidden]="!b_date.hasError('pattern')">Please Enter valid option</div>
+              </mat-error>
             </mat-form-field>
           </div>
           <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label>Address :</mat-label>
-              <input matInput placeholder="  Full Address">
+              <input matInput id="addr" placeholder="   Full Address" name="addr" #addr="ngModel" [(ngModel)]="selectedForm.address" required>
+              <mat-error>
+                <div [hidden]="!addr.hasError('required')">It is required</div>
+                <div [hidden]="!addr.hasError('pattern')">Please Enter valid Address</div>
+              </mat-error>
             </mat-form-field>
           </div>
           
@@ -91,51 +119,71 @@
           <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label>Employer Name:</mat-label>
-              <input (keypress)="OnlyAlphabetAllowed($event)" matInput placeholder="  Name">
+              <input (keypress)="OnlyAlphabetAllowed($event)" matInput id="e_name" placeholder="  Name" name="e_name" #e_name="ngModel" [(ngModel)]="selectedForm.employe_name" pattern="^[a-zA-Z ]{1,50}$" required>
+              <mat-error>
+                <div [hidden]="!e_name.hasError('required')">It is required</div>
+                <div [hidden]="!e_name.hasError('pattern')">Please Enter valid Name</div>
+              </mat-error>
             </mat-form-field>
           </div>
           <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label>Udyam No:</mat-label>
-              <input matInput placeholder="  Number">
+              <input matInput id="u_num" placeholder="  Udyam number" name="u_num" #u_num="ngModel" [(ngModel)]="selectedForm.udyam_name" required>
+              <mat-error>
+                <div [hidden]="!u_num.hasError('required')">It is required</div>
+                <div [hidden]="!u_num.hasError('pattern')">Please Enter valid udyam number</div>
+              </mat-error>
             </mat-form-field>
           </div>
           <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label>DOI:</mat-label>
-              <input matInput [matDatepicker]="pickers">
+              <input  name="d_date" id="d_date" #d_date="ngModel" [(ngModel)]="selectedForm.doi" matInput [matDatepicker]="pickers" required>
               <mat-hint>MM/DD/YYYY</mat-hint>
               <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
               <mat-datepicker #pickers></mat-datepicker>
+              <mat-error>
+                <div [hidden]="!d_date.hasError('required')">It is required</div>
+                <div [hidden]="!d_date.hasError('pattern')">Please Enter valid Date</div>
+              </mat-error>
             </mat-form-field>
           </div>
           <br>
           <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label>Loyality Card:</mat-label>
-              <input matInput >
+              <input matInput id="l_card" placeholder="  Name" name="l_card" #l_card="ngModel" [(ngModel)]="selectedForm.loyality"  required>
+              <mat-error>
+                <div [hidden]="!l_card.hasError('required')">It is required</div>
+                <div [hidden]="!l_card.hasError('pattern')">Please Enter valid input</div>
+              </mat-error>
             </mat-form-field>
           </div>
          <div class="mb-3">
-          <mat-form-field>
-            <input matInput  id="ref_id" placeholder="Ref id" name="ref_id" #ref_id="ngModel" [(ngModel)]="selectedForm.ref_id"   disabled>
+          <mat-form-field appearance="outline">
+            <input matInput   id="ref_id" placeholder="  Ref id" name="ref_id" #ref_id="ngModel" [(ngModel)]="selectedForm.ref_id"   disabled>
           </mat-form-field>
           </div>
             <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label>External Customer Id:</mat-label>
-              <input matInput  disabled="">
+              <input  matInput   id="ex_id" placeholder="  External Customer Id" name="ex_id" #ex_id="ngModel" [(ngModel)]="selectedForm.extral_id"  disabled>
             </mat-form-field>
           </div>
           <div class="mb-3">
             <mat-form-field appearance="outline">
               <mat-label>Applicant Dedupe Status:</mat-label>
-              <input matInput >
+              <input  matInput   id="Dedupe_st" placeholder="  Dedupe Status" name="Dedupe_st" #Dedupe_st="ngModel" [(ngModel)]="selectedForm.dedupe_status" required >
+              <mat-error>
+                <div [hidden]="!Dedupe_st.hasError('required')">It is required</div>
+                <div [hidden]="!Dedupe_st.hasError('pattern')">Please Enter valid input</div>
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
-        <div class="mb-3">
-          <button class="btn-lg btn-info" (click)="nevigateToOtp()" >Submit</button>
+        <div class="mb-3" style="padding-left:1100px;">
+          <button class="btn-lg btn-info "  (click)="nevigateToOtp()" >Submit</button>
         </div>
       </form>
   </div>

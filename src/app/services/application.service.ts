@@ -5,5 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class ApplicationService {
   ref_id:string;
+  user_details:any;
   constructor() { }
 }

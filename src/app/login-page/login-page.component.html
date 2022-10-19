@@ -15,7 +15,7 @@
                         </div>
                         <div class="form-outline mb-4" >
                           <mat-form-field>
-                            <input matInput  id="mobile" placeholder="Mobile Number" name="mobile" #mobile="ngModel" [(ngModel)]="mobile_number"  maxlength="10" required pattern="[6789]{1,1}[0-9]{9,9}$">
+                            <input matInput (keypress)="OnlyNumbersAllowed($event)" id="mobile" placeholder="Mobile Number" name="mobile" #mobile="ngModel" [(ngModel)]="mobile_number"  maxlength="10" required pattern="[6789]{1,1}[0-9]{9,9}$">
                             <mat-error [hidden]="mobile.valid" >
                               <div [hidden]="!mobile.hasError('required')">It is required</div>
                               <div [hidden]="!mobile.hasError('pattern')">Please Enter valid Number</div>
@@ -27,16 +27,16 @@
                           <input matInput id="gmail"  placeholder="Email Id" name="gmail" #gmail="ngModel" [(ngModel)]="email_id" required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
                           <mat-error [hidden]="gmail.valid" >
                             <div [hidden]="!gmail.hasError('required')">It is required</div>
-                            <div [hidden]="!mobile.hasError('pattern')">Please Enter valid Email</div>
+                            <div [hidden]="!gmail.hasError('pattern')">Please Enter valid Email</div>
                           </mat-error>
                           </mat-form-field>
                         </div>
                         <div class="form-outline mb-4">
                             <mat-form-field>
-                              <input matInput  id="names"  placeholder="Name" name="names" #names="ngModel" [(ngModel)]="u_name" required pattern="^[a-zA-Z ]{1,50}$">
+                              <input matInput (keypress)="OnlyAlphabetAllowed($event)" id="names"  placeholder="Name" name="names" #names="ngModel" [(ngModel)]="u_name" required pattern="^[a-zA-Z ]{1,50}$">
                               <mat-error [hidden]="names.valid" >
                                 <div [hidden]="!names.hasError('required')">It is required</div>
-                                <div [hidden]="!mobile.hasError('pattern')">Please Enter valid Name</div>
+                                <div [hidden]="!names.hasError('pattern')">Please Enter valid Name</div>
                               </mat-error>
                               </mat-form-field>
                         </div><br>

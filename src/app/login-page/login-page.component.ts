@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
 import { ToastrService } from 'ngx-toastr';
 import { ApplicationService } from '../services/application.service';
-// import{UserDataService} from'';
-
 
 @Component({
   selector: 'app-login-page',
